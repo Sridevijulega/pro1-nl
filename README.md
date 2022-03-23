@@ -1,5 +1,5 @@
-Springboot InfraStructure Automation
-Dependencies
+**Springboot InfraStructure Automation**
+**Dependencies**
 
     Terraform
     AWS Credentials
