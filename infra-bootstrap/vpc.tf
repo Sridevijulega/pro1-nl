@@ -1,17 +1,24 @@
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
-  version = "~>2.6.0"
-
-  name = "pronl-app-${var.app_environment}"
-  cidr = "10.0.0.0/16"
-  azs = var.azs
-  public_subnets = [
-    "10.0.4.0/24",
-    "10.0.5.0/24",
-    "10.0.6.0/24"]
+  
+  name = var.vpc_name
+  cidr = var.vpc_cidr
+  
+  azs                  = data.aws_availability_zones.available.names
+  private_subnets      = var.vpc_private_subnets
+  public_subnets       = var.vpc_public_subnets
   enable_dns_hostnames = true
+  enable_nat_gateway   = true
 
   tags = {
-    project = "pronl-app"
+    Terraform = "true"
   }
+}
+
+data "aws_subnet_ids" "vpc" {
+  vpc_id = module.vpc.vpc_id
 }
