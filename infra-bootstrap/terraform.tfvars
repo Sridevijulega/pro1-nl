@@ -1,0 +1,9 @@
+region              = "ap-south-1"
+vpc_name            = "pronl"
+vpc_private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+vpc_public_subnets  = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
+instance_type       = "t2.micro"
+ami                 = "ami-04893cdb768d0f9ee"
+load_balancer       = "lb"
+enable_ipv6         = true
+count               = "1"

@@ -3,6 +3,13 @@ variable "region" {
   description = "AWS region"
 }
 
+#variable "azs" {
+#  type = list(string)
+#  default = ["ap-south-1a",
+#    "ap-south-1b",
+#    "ap-south-1c"]
+#}
+
 variable "vpc_name" {
   type        = string
   default     = ""
@@ -28,10 +35,18 @@ variable "vpc_public_subnets" {
 }
 
 variable "instance_type" {
-  default = "t2.micro"
+  type = string
 }
 
-variable "app_environment" {
+variable "ami" {
+  type = string
+}
+
+variable "ec2_count" {
+  type = string
+}
+
+variable "environment" {
   type = list(string)
   default = ["dev",
     "sta",
